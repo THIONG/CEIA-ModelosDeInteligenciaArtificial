@@ -4,7 +4,5 @@ from app.utils.watchdog_service import init_watchdog
 
 if __name__ == "__main__":
     init_watchdog()
-    
     app = create_app()
-    
     app.run(debug=config.DEBUG, use_reloader=False, port=config.PORT)

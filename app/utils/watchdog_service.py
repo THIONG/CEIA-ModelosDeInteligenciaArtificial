@@ -5,7 +5,6 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 class ChangeHandler(FileSystemEventHandler):
-    
     def on_modified(self, event):
         if not event.is_directory:
             file_ext = os.path.splitext(event.src_path)[1].lower()

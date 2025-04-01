@@ -1,15 +1,14 @@
 from app.config import config
 
 class ContextService:
-    
     def __init__(self):
         self.context = []
-    
+
     def update_context(self, user_input, ai_response):
         if len(self.context) >= config.MAX_HISTORY:
             self.context.pop(0)
         self.context.append({"user": user_input, "ai": ai_response})
-    
+
     def get_context_messages(self):
         messages = [
             {"role": "system", "content": "Eres un asistente virtual avanzado con experiencia en programación y análisis de datos."}
@@ -18,7 +17,7 @@ class ContextService:
             messages.append({"role": "user", "content": entry["user"]})
             messages.append({"role": "assistant", "content": entry["ai"]})
         return messages
-    
+
     def reset_context(self):
         self.context = []
 

@@ -16,11 +16,9 @@ def get_response():
 
         messages = context_service.get_context_messages()
         messages.append({"role": "user", "content": user_input})
-        
         result = llm_service.generate_response(messages)
-        
         context_service.update_context(user_input, result)
-        
+
         return jsonify({"reply": result})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
